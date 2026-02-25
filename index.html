@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <title>SENTINEL1_LIGTAS-GIS VISUALIZATION</title>
+    <link rel="stylesheet" href="./style.css">
+
+  </head>
+    
+  <body>
+  <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project LIGTAS-AGAD | Advanced Dashboard</title>
+    
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    
+</head>
+<body>
+
+    <div id="sidebar">
+        <div class="header">
+            <h2>LIGTAS-AGAD Mini GIS</h2>
+            <p>Landslide Geospatial Tracking</p>
+        </div>
+        
+        <div class="control-panel">
+            
+            <div class="btn-wrapper">
+                <button class="btn btn-gps" onclick="locateUser()">Detect Location (GPS)</button>
+            </div>
+
+            <div class="btn-wrapper upload-wrapper">
+                <button class="btn">Upload CSV Data</button>
+                <input type="file" id="csvFileInput" accept=".csv" />
+            </div>
+
+            <div class="geojson-panel">
+                <label style="font-size: 12px; font-weight: bold; color: #34495e;">Add Online GeoJSON URL Overlay:</label>
+                <input type="text" id="geojsonUrl" class="geojson-input" placeholder="Paste GeoJSON URL here...">
+                
+                <div class="style-controls">
+                    <div class="style-group">
+                        <label>Line Color</label>
+                        <input type="color" id="geoLineColor" value="#8e44ad">
+                    </div>
+                    <div class="style-group">
+                        <label>Fill Color</label>
+                        <input type="color" id="geoFillColor" value="#9b59b6">
+                    </div>
+                    <div class="style-group" style="flex: 1.5;">
+                        <label>Opacity: <span id="opacityVal">0.3</span></label>
+                        <input type="range" id="geoOpacity" min="0" max="1" step="0.1" value="0.3" oninput="document.getElementById('opacityVal').innerText = this.value">
+                    </div>
+                </div>
+
+                <button class="btn btn-geojson" onclick="addGeoJson()">Load Styled GeoJSON</button>
+            </div>
+
+            <hr class="divider">
+
+            <div id="stats-container" style="display: none;">
+                <h3 style="font-size: 14px; color: #34495e; margin-bottom: 10px;">Summary</h3>
+                
+                <div class="stat-card red">
+                    <div class="stat-title">Detected Landslides</div>
+                    <div class="stat-value" id="stat-count">0</div>
+                </div>
+
+                <div class="stat-card orange">
+                    <div class="stat-title">Total Area Destroyed</div>
+                    <div class="stat-value"><span id="stat-area">0</span> <span style="font-size: 12px;">Hectares</span></div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-title">Max Trigger Rainfall</div>
+                    <div class="stat-value"><span id="stat-rain">0</span> <span style="font-size: 12px;">mm</span></div>
+                </div>
+
+                <button class="btn btn-kmz" id="kmz-btn" onclick="exportToKMZ()">Export layer</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="map"></div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
+    <script src="https://unpkg.com/tokml@0.4.0/tokml.js"></script> <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script> 
+
+</body>
+</html>
+    <script  src="./script.js"></script>
+
+  </body>
+  
+</html>
